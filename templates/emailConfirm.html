@@ -43,8 +43,8 @@
 
 
 
-  <form action="http://localhost:5000/emailConfirmation/{{username}}" class="horizontal-form" method="POST">
-
+  <!-- <form action="http://localhost:5000/emailConfirmation/{{username}}" class="horizontal-form" method="POST"> -->
+  <form action="{{url_for('emailConfirmation', username = username)}}"class="horizontal-form" method="POST">
     <div class="form-group">
       <div class="col-md-2">
       </div>
