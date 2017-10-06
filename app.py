@@ -20,7 +20,7 @@ mail = Mail(app)
 
 app.secret_key= 'postapptesting2017'
 def connect():
-    connection = MongoClient("ds163294.mlab.com", 63294)
+    connection = MongoClient("ds163294.mlab.com", 63294, tz_aware = True)
     handle = connection["post-app"]
     handle.authenticate("amynguyen", 'amynguyen')
     return handle

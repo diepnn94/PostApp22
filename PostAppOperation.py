@@ -3,6 +3,8 @@ from pymongo import MongoClient
 import datetime
 from flask_mail import Mail, Message
 import mailInfo
+# import pytz
+
 # user = "amynguyen"
 #
 # uri = "mongodb://amynguyen:amynguyen@ds163294.mlab.com:63294/post-app"
@@ -14,6 +16,7 @@ KEY = "postapptesting2017"
 
 # def inserttoDB(name, email, username, password, key):
 def inserttoDB(db,name, email, username, password):
+
 
     result = db.user.find({"username":username});
     if result.count() == 0:
@@ -60,18 +63,21 @@ def confirmation(db,username,key):
         return "fail"
 
 def postMessage(db,username, content):
+
     if content is not None:
         if len(content ) > 0:
             db.message.insert_one(
             {
                 "posted-by": username,
-                "timestamp": datetime.datetime.now(),
+                "timestamp": datetime.datetime.now().strftime("%a %b %d %I:%M:%S %p %Z"),
                 "content": content.strip()
             }
             )
 
 def getMessage(db):
-    result = db.message.find().sort('timestamp',pymongo.ASCENDING);
+    # result = db.message.find().sort('timestamp',pymongo.ASCENDING);
+    result = db.message.find().sort('_id',pymongo.ASCENDING);
+
     return result;
 
 
