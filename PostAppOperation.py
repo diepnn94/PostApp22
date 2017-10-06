@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import datetime
 from flask_mail import Mail, Message
 import mailInfo
-# import pytz
+import pytz
 
 # user = "amynguyen"
 #
@@ -65,11 +65,17 @@ def confirmation(db,username,key):
 def postMessage(db,username, content):
 
     if content is not None:
+        a = pytz.utc.localize(datetime.datetime.utcnow())
+        print(a)
+        b = a.astimezone(pytz.timezone('US/Pacific'))
+        print(b)
         if len(content ) > 0:
             db.message.insert_one(
             {
                 "posted-by": username,
-                "timestamp": datetime.datetime.now().strftime("%a %b %d %I:%M:%S %p %Z"),
+                # "timestamp": datetime.datetime.now().strftime("%a %b %d %I:%M:%S %p %Z"),
+                "timestamp": b.strftime("%a %b %d %I:%M:%S %p %Z"),
+
                 "content": content.strip()
             }
             )
