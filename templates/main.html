@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'custom.css') }}">
+
 </head>
 <body>
 
   <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+    <div class="font container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
@@ -38,27 +39,34 @@
           {% endif %}
           <li><a href="{{ url_for('account', option='register') }}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
           <li><a href="{{ url_for('blog') }}"><span class="glyphicon glyphicon-comment"></span> Posts</a></li>
+          <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
 
-  <div style="background-color:#505050;">
+  <!-- <div style="background-color:white;" class="font"> -->
+    <div style="background-image:url('{{url_for('static', filename = 'rain.jpg')}}'); background-size:90% 100%;overflow-x:hidden;" class="font">
+
     <br>
     <ul class="list-group">
       {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-      <li class="list-group-item text-center" style="background-color:#ff6666;">{{message}}</li>
+      <li class="list-group-item text-center" style="background-color:#e6e6e6;">{{message}}</li>
       {% endfor %} {% endif %} {% endwith %}
     </ul>
-    <div class="container-fluid text-center" >
+    <div class="font text-center">
+      <h1 style="font-weight:900;font-size: 50px;color:#1a1a1a; text-shadow:4px 4px #bfbfbf;">The Beginning</h1>
+      <br>
+    </div>
+    <!-- <div class="container-fluid text-center" >
       <div class="row content">
         <div class="col-sm-1 col-md-1 col-lg-1 sidenav">
 
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10">
           <div style="position:relative;">
-            <!-- width="100%" height="1000px -->
+
             <img class="image-responsive" src="{{ url_for('static', filename='main.jpg') }}"  alt="main">
             <div class="imageText">Welcome to Post App, please log in to continue</div>
           </div>
@@ -68,10 +76,103 @@
 
         </div>
       </div>
+    </div> -->
+    <div class="row" >
+      <div class="col-md-2 col-lg-2" ></div>
+      <div class="col-md-8 col-lg-8" >
+        <div id="homeSlideShow" class="carousel slide" data-interval="10000" data-ride="carousel">
+          <!--Indicators  -->
+          <ol class="carousel-indicators">
+            <li data-target="#homeSlideShow" data-slide-t0="0" class="active"></li>
+            <li data-target="#homeSlideShow" data-slide-t0="1"></li>
+            <li data-target="#homeSlideShow" data-slide-t0="2"></li>
+            <li data-target="#homeSlideShow" data-slide-t0="3"></li>
+          </ol>
+          <!--wrapper for slides  -->
+          <div class="carousel-inner font"style="box-shadow:5px 5px 70px #a6a6a6 , -5px -5px  70px #a6a6a6;">
+            <!-- pic1 -->
+            <div class="item active">
+              <img src="{{url_for('static', filename='main4.jpg')}}" alt="pic1" class="mainSlideShow">
+              <div class="carousel-caption">
+                <h3 class="text-center">PostApp</h3>
+                <p>A medium to express</p>
+              </div>
+            </div>
+            <!-- pic2 -->
+            <div class="item " >
+              <img src="{{url_for('static', filename='main5.jpg')}}" alt="pic2" class="mainSlideShow">
+              <div class="carousel-caption">
+                <h3 class="text-center">PostApp</h3>
+                <p>A space for explosion</p>
+              </div>
+            </div>
+            <!-- pic2 -->
+            <div class="item ">
+              <img src="{{url_for('static', filename='main6.jpg')}}" alt="pic3" class="mainSlideShow">
+              <div class="carousel-caption">
+                <h3 class="text-center">PostApp</h3>
+                <p>A place to share memory</p>
+              </div>
+            </div>
+            <!-- pic4 -->
+            <div class="item ">
+              <img src="{{url_for('static', filename='main7.jpg')}}" alt="pic4" class="mainSlideShow">
+              <div class="carousel-caption">
+                <h3 class="text-center">PostApp</h3>
+                <p>A channel to relieve  </p>
+              </div>
+            </div>
+          </div>
+          <!-- left control -->
+          <a class="left carousel-control" href="#homeSlideShow" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <!-- right control -->
+          <a class="right carousel-control" href="#homeSlideShow" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-2 col-lg-2"></div>
     </div>
 
-    <footer class="container-fluid text-center" style="padding:10px;color:white;" >
-      <p>Copyright 2017 Post App by Amy</p>
+    <div class="container font text-center">
+      <br><br>
+      <h1 style="font-weight:900;font-size: 50px;color:#1a1a1a; text-shadow:4px 4px #cccccc;">The Road</h1>
+      <br>
+      <div class="table-responsive" style="box-shadow: 20px 20px 70px #a6a6a6, -20px -20px 70px #a6a6a6;border: 1px solid gray;border-radius:20px;">
+        <table class="table maingallery" >
+          <tbody>
+          <tr style="border-shadow: 5px 5px 60px gray, -5px -5px 60px gray;" >
+            <td ><a href="#"><img src="{{url_for('static', filename='inspiration.jpg')}}"   alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration2.jpg')}}"  alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration3.jpg')}}" alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration4.jpg')}}"  alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration5.jpg')}}" alt="inspiration"></a></td>
+          </tr>
+          <tr style="border-shadow: 5px 5px 60px gray, -5px -5px 60px gray">
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration6.jpg')}}" alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration7.jpg')}}" alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration8.jpg')}}" alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration9.jpg')}}" alt="inspiration"></a></td>
+            <td><a href="#"><img src="{{url_for('static', filename='inspiration10.jpg')}}" alt="inspiration"></a></td>
+          </tr>
+
+        </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="font text-center">
+      <h1 style="font-weight:900;font-size: 50px;color:#1a1a1a; text-shadow:4px 4px #cccccc;">The End</h1>
+      <br>
+    </div>
+
+    <footer class="container-fluid text-center font" style="padding:10px;color:black;"
+      <br><br>
+
+      <p >Post App copyright 2017<p>
     </footer>
   </div>
 </body>

@@ -150,3 +150,21 @@
   overflow-y: scroll;
   color:rgb(70, 127, 133);
 }
+
+.mainSlideShow{
+  width: 100%;
+  min-height: 600px;
+  max-height: 500px;
+}
+
+.font{
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+}
+
+table.maingallery tbody tr td img{
+  width: 200px;
+  height: 200px;
+  border: 1px solid white;
+  box-shadow: 5px 5px 40px white, -5px -5px 40px #333333;
+}

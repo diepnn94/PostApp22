@@ -135,4 +135,6 @@ def account(option):
             return render_template("account.html", option = option, form=registration);
 
 if __name__ == '__main__':
+    app.debug = True;
     app.run();
+    app.run(debug = True);
