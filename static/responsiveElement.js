@@ -7,9 +7,19 @@ function updateClock(){
   var month = monthList[currentTime.getMonth()];
   var year = currentTime.getFullYear();
   var day = dayList[currentTime.getDay()];
-  var hour = currentTime.getHours();
-  var min = currentTime.getMinutes();
-  var sec = currentTime.getSeconds();
+  var hour = currentTime.getHours().toString();
+  var min = currentTime.getMinutes().toString();
+  var sec = currentTime.getSeconds().toString();
+  if (hour.length ==1){
+    hour = "0" + hour;
+  }
+  if (min.length ==1){
+    min = "0" + min;
+  }
+
+  if (sec.length ==1){
+    sec = "0" + sec;
+  }
   var time = day+" " +month+ ", " + date + ", "+year +" "+ hour +":" + min + ":"+sec;
   // var dateString =  currentTime.getDate() + " " +currentTime.getMonth() + " " +
   // currentTime.getHours() + ":" +currentTime.getMinutes() + ":"
@@ -95,7 +105,6 @@ function postControl(name){
 
 
 function postMessage(name){
-  // var date = new Date();
   var currentTime = new Date();
   var dayList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   var monthList = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -103,19 +112,23 @@ function postMessage(name){
   var month = monthList[currentTime.getMonth()];
   var year = currentTime.getFullYear();
   var day = dayList[currentTime.getDay()];
-  var hour = currentTime.getHours();
-  var min = currentTime.getMinutes();
-  var sec = currentTime.getSeconds();
+  var hour = currentTime.getHours().toString();
+  var min = currentTime.getMinutes().toString();
+  var sec = currentTime.getSeconds().toString();
   if (hour.length ==1){
     hour = "0" + hour;
   }
   if (min.length ==1){
     min = "0" + min;
   }
+
   if (sec.length ==1){
     sec = "0" + sec;
   }
   var time = day+" " +month+ ", " + date + ", "+year +" "+ hour +":" + min + ":"+sec;
+  // var dateString =  currentTime.getDate() + " " +currentTime.getMonth() + " " +
+  // currentTime.getHours() + ":" +currentTime.getMinutes() + ":"
+  // +currentTime.getSeconds() ;
   var content = $("#content").val()
   if (content.length > 0){
   $.ajax({

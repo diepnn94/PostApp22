@@ -25,7 +25,7 @@
 
 
 
-@media only screen and (min-width: 10px) and (max-width:319px) {
+/*@media only screen and (min-width: 10px) and (max-width:319px) {
   img{
     width: 100%;
     height:80vmax;
@@ -160,7 +160,7 @@
 
   }
 }
-
+*/
 
 .navbar.navbar-inverse{
   margin-bottom: 0;
@@ -175,8 +175,10 @@
 
 .mainSlideShow{
   width: 100%;
-  min-height: 600px;
-  max-height: 500px;
+  /*min-height: 600px;
+  max-height: 500px;*/
+  min-height: 80vh;
+  max-height: 80vh;
 }
 
 .font{
@@ -230,7 +232,9 @@ table.maingallery tbody tr td img{
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .10em; /* Adjust as needed */
-  width: 16.5em;
+  /*width: 16.5em;*/
+  font-size: 2.5vw;
+  width: 42vw;
   display: inline-block;
   animation:
     typing 7s steps(29, end),
@@ -241,7 +245,8 @@ table.maingallery tbody tr td img{
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 16.5em}
+  /*to { width: 16.5em}*/
+  to { width: 42vw}
 }
 
 /* The typewriter cursor effect */
