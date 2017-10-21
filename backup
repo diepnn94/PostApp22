@@ -1,0 +1,54 @@
+$(function(){
+  alert($(window).width());
+})
+
+$(function(){
+  alert("hello");
+  // window.onbeforeunload = function(){alert("leaving")};
+})
+
+function updateClock(){
+  var currentTime = new Date();
+  $("#time").text(currentTime);
+}
+
+$(function(){
+  setInterval("updateClock()",1000);
+})
+$(function(){
+  $("#gallery img").click(function(){
+    var img_src = $(this).attr('src');
+
+    var div = $("<div id='new' class='background'></div>").css({
+        "width": $(window).width(),
+        "height": $(window).height()
+    }).html("");
+
+    var clone = $("<img src= '" + img_src + "'>").css({
+
+        "width": ($(window).width()/10)*8,
+        "height": ($(window).height()/10)*8,
+        "margin-left": ($(window).width()/10),
+        "margin-top": ($(window).height()/10),
+        "position": 'fixed',
+
+        "animation-name": "flip",
+        "animation-duration": "2s"
+    });
+    var close = $("<button class='rem2'>X</button>").css({
+      "top": ($(window).height()/10)-50,
+      "left":($(window).width()/10)*9
+
+    });
+    $(div).append(clone);
+    $(div).append(close);
+    $("#galleryControl").append(div);
+    $(".rem2").on("click", function(){
+      $("#galleryControl").children().remove();
+    })
+  })
+})
+
+$(function(){
+  $(".blogMessage").scrollTop(2000);
+});

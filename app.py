@@ -4,6 +4,7 @@ from forms import PostForm
 from flask import session,Flask, flash,redirect, url_for, request, render_template
 import PostAppOperation
 import mailInfo
+from datetime import timedelta
 from flask_mail import Mail, Message
 from pymongo import MongoClient
 
@@ -19,6 +20,13 @@ app.config['MAIL_USE_SSL'] = Mailinfo.SSL
 mail = Mail(app)
 
 app.secret_key= 'postapptesting2017'
+
+@app.before_request
+def make_session_permanent():
+    session.permanent = True;
+    app.permanent_session_lifetime = timedelta(minutes =30);
+    # flash("The session has expired. Please log in to access PostApp.");
+
 def connect():
     connection = MongoClient("ds163294.mlab.com", 63294, tz_aware = True)
     handle = connection["post-app"]
@@ -48,6 +56,7 @@ def blog():
             response = PostAppOperation.postMessage(db,username, post.post.data );
             post = PostForm(formdata=None);
             messages = PostAppOperation.getMessage(db);
+            username = {"name": username};
             return render_template("blog.html", username=username, form=post, messages = messages);
         else:
             flash("You need to log in/register to access Post App.");
@@ -57,8 +66,6 @@ def blog():
 @app.route("/emailConfirmation", defaults={'username':None})
 def emailConfirmation(username):
     if request.method == "GET":
-        # if 'name' in session:
-        #     username = session['name'];
         return render_template("emailConfirm.html", username = username);
 
     elif request.method == "POST":
