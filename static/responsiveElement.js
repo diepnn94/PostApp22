@@ -1,5 +1,4 @@
-
-function updateClock(){
+function getTime(){
   var currentTime = new Date();
   var dayList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   var monthList = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -16,16 +15,16 @@ function updateClock(){
   if (min.length ==1){
     min = "0" + min;
   }
-
   if (sec.length ==1){
     sec = "0" + sec;
   }
   var time = day+" " +month+ ", " + date + ", "+year +" "+ hour +":" + min + ":"+sec;
-  // var dateString =  currentTime.getDate() + " " +currentTime.getMonth() + " " +
-  // currentTime.getHours() + ":" +currentTime.getMinutes() + ":"
-  // +currentTime.getSeconds() ;
+  return time;
+
+}
+function updateClock(){
+  var time = getTime();
   $("#time").text(time);
-  // $("#time").text(currentTime);
 }
 
 $(function(){
@@ -76,59 +75,11 @@ function postControl(name){
     postMessage(name.name);
 });
 }
-  // $("#postMessage").on("submit", function(e){
-  //   e.preventDefault();
-  //   var date = new Date();
-  //   var content = $("#content").val()
-  //   if (content.length > 0){
-  //   $.ajax({
-  //       url: "https://api.mlab.com/api/1/databases/post-app/collections/message?apiKey=JWHpnnsJXMPxBJnJE0NN-LBMU8PJaaLQ",
-  // 		  data: JSON.stringify({
-  //          "posted-by" : name,
-  //          "timestamp": date,
-  //          "content": content
-  //         }),
-  // 		  type: "POST",
-  // 		  contentType: "application/json",
-  //       success: function(data){
-  //         $("#content").val("");
-  //         getMessage();
-  //       },
-  //       error: function(xhr, status, err) {
-  //         console.log(err);
-  //       }
-  //     });
-  //   }
-//   });
-// });
-
 
 
 function postMessage(name){
-  var currentTime = new Date();
-  var dayList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  var monthList = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  var date = currentTime.getDate();
-  var month = monthList[currentTime.getMonth()];
-  var year = currentTime.getFullYear();
-  var day = dayList[currentTime.getDay()];
-  var hour = currentTime.getHours().toString();
-  var min = currentTime.getMinutes().toString();
-  var sec = currentTime.getSeconds().toString();
-  if (hour.length ==1){
-    hour = "0" + hour;
-  }
-  if (min.length ==1){
-    min = "0" + min;
-  }
 
-  if (sec.length ==1){
-    sec = "0" + sec;
-  }
-  var time = day+" " +month+ ", " + date + ", "+year +" "+ hour +":" + min + ":"+sec;
-  // var dateString =  currentTime.getDate() + " " +currentTime.getMonth() + " " +
-  // currentTime.getHours() + ":" +currentTime.getMinutes() + ":"
-  // +currentTime.getSeconds() ;
+  var time = getTime();
   var content = $("#content").val()
   if (content.length > 0){
   $.ajax({
@@ -173,6 +124,6 @@ function getMessage(){
       output+= '</div>';
     });
     $("#message").html(output);
-    $(".blogMessage").scrollTop(4000);
+    $(".blogMessage").scrollTop(40000);
   });
 }
