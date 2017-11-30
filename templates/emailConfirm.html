@@ -11,8 +11,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'custom.css') }}">
+  <script type="text/javascript" src="{{url_for('static', filename='responsiveElement.js')}}"></script>
 
-  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'custom.css') }}"> -->
 </head>
 
 <body>
@@ -28,45 +28,39 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
 
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{{url_for('main')}}">Home</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"> {{username}}</a></li>
-        <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"> SignOut</a></li>
-      </ul>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{{url_for('main')}}">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="checkUser" href="#"><span class="glyphicon glyphicon-user">Login</a></li>
+          <li><a class="logout" href="{{url_for('main')}}"><span class="glyphicon glyphicon-log-out"> SignOut</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
   </nav>
-  <!-- <div class="col-md-offset-1 col-lg-offset-1" style="margin-top:40px;">
-    <a href="{{ url_for('main') }}"><span class="glyphicon glyphicon-home" style="font-size:30px;"></span> Home</a>
-  </div> -->
+
 
   <ul class="list-group">
     {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
     <li class="list-group-item text-center" style="background-color:#ff6666;">{{message}}</li>
     {% endfor %} {% endif %} {% endwith %}
   </ul>
+  <div class="container">
+    <form id="keyForm" action="{{url_for('blog')}}"  class="horizontal-form" method="POST">
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2"> KEY:</label>
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
+          <input type="password" class="form-control" placeholder="ex.KSS82347SLJD " name="key" id="key" value="" required>
+          <p id="keyErr" class="text-danger small hidden">The key entered is incorrect. Please try again.</p>
+        </div>
 
-
-
-  <!-- <form action="http://localhost:5000/emailConfirmation/{{username}}" class="horizontal-form" method="POST"> -->
-  <form action="{{url_for('emailConfirmation', username = username)}}"class="horizontal-form" method="POST">
-    <div class="form-group">
-      <div class="col-md-2">
+        <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+          <button type="submit" class="btn btn-default">Enter</button>
+        </div>
       </div>
+    </form>
+  </div>
 
-      <div class="col-md-2">
-        <label for="" class="control-label " style="font-size:20px;"> Enter Key: </label>
-      </div>
-
-      <div class="col-md-5" style="padding-bottom: 30px;">
-        <input type="text" style="font-weight: bold;" required class="form-control" placeholder="ex.KSS82347SLJD " name="key">
-      </div>
-      <div class="col-md-1">
-          <button type="submit" class="btn btn-default ">Submit</button>
-      </div>
-    </div>
-  </form>
 </body>
+
 </html>

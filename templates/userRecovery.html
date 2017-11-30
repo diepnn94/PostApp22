@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Recovery</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'custom.css') }}">
+  <!-- <script type="text/javascript" src="{{url_for('static', filename='register.js')}}"></script> -->
+  <script type="text/javascript" src="{{url_for('static', filename='responsiveElement.js')}}"></script>
+
+</head>
+
+<body style="background-image:url('{{url_for('static', filename = 'background_texture1.jpg')}}');" class="formBackground">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{url_for('main')}}">PostApp</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{{url_for('main')}}">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="javascript:void(0);" class="loginPrompt checkUser"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </li>
+          <li><a class="logout" href="{{url_for('main')}}"><span class="glyphicon glyphicon-log-out"> SignOut</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="background-image:url('{{url_for('static', filename = 'rain2.jpg')}}');" id="register">
+
+    <div class="login">
+      <br>
+      <form action="" style="color: rgb(163, 152, 105);" class="horizontal-form loginForm" method="POST">
+        <p class=" text-danger small loginBlogErr hidden">You need to log in to access the blog. Please log in.</p>
+        <div class="form-group row">
+          <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-4"> Username</label>
+          <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
+            <input type="text" class="form-control loginUsername" placeholder="ex.JohnyDoe" name="username" value="" required>
+            <p class="text-danger small loginUserErr hidden">The username cannot be found. Please try again.</p>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-4"> Password</label>
+          <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
+            <input type="password" class="form-control loginPassword" placeholder="ex.JohnyDoe1234" name="password" value="" required>
+            <p class="text-danger small loginPasswordErr hidden">The password does not match our record. Please try again</p>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-offset-4 col-xs-offset-4 col-lg-offset-4 col-md-offset-4 col-sm-2 col-md-2 col-lg-2 col-xs-4">
+            <button type="submit" class="btn btn-default">Login</button>
+          </div>
+          <div class="col-sm-2 col-md-2 col-lg-2 col-xs-4">
+            <button type="reset" class="btn btn-default loginCancel">Cancel</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="userRecover col-lg-offset-8 col-lg-4 col-md-offset-7 col-md-5 col-sm-offset-6 col-sm-6 col-xs-offset-4 col-xs-8">
+            <ul>
+              <li><a href="#">Forgot Your Username</a></li>
+              <li><a href="#">Forgot Your Password</a></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <center>
+      <h2>POST APP USER RECOVERY FORM</b></h2></center>
+    <br>
+    <form class="form-horizontal" id="usernameRecover" action="" method="POST">
+      <!-- <div style="height:2px; background-color:black;"></div> -->
+      <hr>
+      <center>
+        <h4><b>POST APP FORGOT USERNAME</b></h4>
+      </center>
+      <br>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2" ;> Name</label>
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+          <input type="text" class="form-control" placeholder="ex. John Doe" name="name" id="name" value="" required>
+          <p id="nameErr" class="text-danger small hidden">Name should contain only letters and spaces.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Email</label>
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="email" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <br>
+        <button type="submit" class="btn btn-default">Recover Username</button>
+      </div>
+      <div id="usernameDisplay">
+
+      </div>
+    </form>
+    <br><br>
+
+    <form class="form-horizontal" id="passwordRecover" action="#" method="POST">
+      <!-- <div style="height:2px; background-color:black;"></div> -->
+      <hr>
+
+      <center>
+        <h4><b>POST APP FORGOT PASSWORD</b></h4></center>
+      <br>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Username</label>
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+          <input type="text" class="form-control" placeholder="ex. JohnyDoe" name="username" id="username" value="" minlength="9" maxlength="20" required pattern="[a-zA-Z0-9]*$" title="Username should only contain letter and numbers (no spaces).">
+          <p id="usernameErr" class="text-danger small hidden">Username is already taken.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Email</label>
+        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
+          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="email" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <br>
+        <button type="submit" class="btn btn-default">Recover Password</button>
+      </div>
+
+    </form>
+
+
+    <!-- <div id = "sendingMail" class="form-group hidden">
+      <div class="col-sm-offset-5 col-sm-10 col-md-offset-5 col-md-4 col-lg-offset-5 col-lg-4 col-xs-offset-4 col-xs-4">
+      <div class="loader"></div>
+      <p>Sending...</p>
+      </div>
+    </div> -->
+    <br>
+    <br>
+  </div>
+
+
+</body>
+
+</html>
