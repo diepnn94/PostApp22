@@ -1,3 +1,91 @@
+a{
+  color:white;
+}
+div{
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+}
+
+.formBackground{
+  background-size: 30% 30%;
+}
+
+#register{
+
+  height: 100%;
+  background-size: 90% 100%;
+}
+
+
+
+.userRecover ul{
+  list-style-type: none;
+}
+.userRecover a{
+  color:white;
+  font-size: 10px;
+
+}
+
+#passwordRecover, #usernameRecover h2, h4{
+  color: black;
+
+}
+
+#registrationForm, #passwordRecover, #usernameRecover label{
+  font-size: 14px;
+  /*color: rgb(163, 152, 105);*/
+  color: rgb(140, 140, 140);
+
+}
+#registrationForm, #passwordRecover, #usernameRecover input, button{
+  opacity: 0.8;
+}
+.mainBackground{
+  background-size:90% 100%;
+  overflow-x: hidden;
+}
+.text{
+  white-space:pre-wrap;
+  /*font-size: 22px;*/
+  font-size: big;
+  color:white;
+  text-shadow: 1px 1px black;
+}
+.sectionStyle{
+  font-weight: 900;
+  font-size: bigger;
+  color:black;
+  text-shadow: 4px 4px white;
+  font-family: 'EB Garamond', serif;
+
+  /*padding: 10vmax;*/
+}
+
+footer{
+  padding:10px;
+  color:white;
+}
+
+footer ul{
+  list-style-type: disc;
+}
+
+/*footer ul li :first-child{
+  margin-left: 18vw;
+}*/
+
+footer ul li{
+  padding-left: 2vmax;
+  display: inline;
+}
+
+footer ul li a img:hover{
+  border: 1px solid pink;
+  color:rgb(168, 142, 100);
+}
+
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -24,144 +112,6 @@
 }
 
 
-
-/*@media only screen and (min-width: 10px) and (max-width:319px) {
-  img{
-    width: 100%;
-    height:80vmax;
-  }
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 3.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-@media only screen and (min-width: 320px) and (max-width:480px) {
-  img{
-    width: 100%;
-    height:70vmax;
-  }
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 2.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-
-@media only screen and (min-width: 481px) and (max-width:767px) {
-  img{
-    width: 100%;
-    height:60vmax;
-  }
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 3.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width:1024px) {
-  img{
-    width: 100%;
-    height:85vmax;
-  }
-
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 3.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1880px) {
-  img{
-    width: 100%;
-    height:50vmax;
-  }
-
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 2.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-
-@media only screen and (min-width: 1881px) and (max-width: 2040px){
-  img{
-    width: 100%;
-    height:60vmax;
-  }
-
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 2.5vmax;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-
-@media only screen and (min-width: 2041px) and (max-width: 10000px){
-  img{
-    width: 100%;
-    height:80vmax;
-  }
-
-  .imageText{
-    position: absolute;
-    top:80%;
-    left:10%;
-    width: 80%;
-    background-color:white;
-    opacity:.5;
-    font-size: 3vh;
-    border:1px white solid;
-    border-radius: 15px;
-
-  }
-}
-*/
-
 .navbar.navbar-inverse{
   margin-bottom: 0;
   border-radius: 0;
@@ -173,35 +123,90 @@
   color:rgb(70, 127, 133);
 }
 
-.mainSlideShow{
+@media all and (orientation: landscape){
+  .mainSlideShow{
+    width: 100%;
+    min-height: 70vh;
+    max-height: 70vh;
+  }
+  #gallery{
+    height: 80vh;
+    overflow-y: scroll;
+    padding: 1vmax;
+    background-color: rgba(158, 151, 159, 0.39);
+  }
+  #gallery div img{
+    width: 13vw;
+    height: 13vw;
+    z-index: 1;
+  }
+  #videoGallery iframe{
+    height: 50vh;
+  }
+}
+
+@media all and (orientation: portrait){
+  .mainSlideShow{
+    width: 100%;
+    min-height: 60vw;
+    max-height: 60vw;
+  }
+  #gallery{
+    height: 50vh;
+    overflow-y: scroll;
+    padding: 1vmax;
+    background-color: rgba(158, 151, 159, 0.39);
+  }
+  #gallery div img{
+    width: 20vw;
+    height: 23vw;
+    z-index: 1;
+  }
+
+  #videoGallery iframe{
+    height: 50vw;
+  }
+}
+
+.login{
+  height: 35vh;
   width: 100%;
-  /*min-height: 600px;
-  max-height: 500px;*/
-  min-height: 80vh;
-  max-height: 80vh;
+  z-index: 1;
+  padding: 1vmax;
+  background-color: rgba(158, 151, 159, 0.39);
+
 }
 
-.font{
-  font-family: 'EB Garamond', serif;
-  font-size: 20px;
+
+
+
+
+#gallery div img:hover{
+  border: 2px solid rgb(31, 125, 150);
 }
 
-table.maingallery tbody tr td img{
-  width: 200px;
-  height: 200px;
-  border: 1px solid white;
-  box-shadow: 5px 5px 40px white, -5px -5px 40px #333333;
-  /*transform: rotateY(180deg);*/
+.close{
+color:red;
+position: absolute;
+top: 5px;
+right: 25px;
+font-size: 35px;
+font-weight: bold;
 }
+
 
 .background{
   background-color: rgba(108, 109, 111, 0.44);
   position: fixed;
   top: 0px;
+  z-index: 2;
+  left:0;
 }
-#gallery table tbody tr td img:hover{
-  box-shadow: 20px 20px 30px rgba(79, 68, 77, 0.89), -20px -20px 30px rgba(79, 68, 77, 0.89);
+.background img{
+  width: 100%;
+  height: 400px;
 }
+
 .rem2{
   position: fixed;
   width: 5%;
@@ -213,9 +218,7 @@ table.maingallery tbody tr td img{
   background-color: rgba(81, 84, 81, 0.88);
   color: rgba(235, 235, 235, 0.82);
 }
-#gallery table tbody tr td{
-  border: 0;
-}
+
 #timestyle{
   color: white;
   font-size:20px;
