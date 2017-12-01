@@ -85,7 +85,7 @@
     <center>
       <h2>POST APP USER RECOVERY FORM</b></h2></center>
     <br>
-    <form class="form-horizontal" id="usernameRecover" action="" method="POST">
+    <form class="form-horizontal" id="usernameRecover">
       <!-- <div style="height:2px; background-color:black;"></div> -->
       <hr>
       <center>
@@ -94,17 +94,16 @@
       <br>
 
       <div class="form-group">
-        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2" ;> Name</label>
-        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-          <input type="text" class="form-control" placeholder="ex. John Doe" name="name" id="name" value="" required>
-          <p id="nameErr" class="text-danger small hidden">Name should contain only letters and spaces.</p>
+        <label class="control-label col-sm-2 col-md-2 col-lg-3 col-xs-2" ;> Name</label>
+        <div class="col-sm-8 col-md-8 col-lg-7 col-xs-12">
+          <input type="text" class="form-control" placeholder="ex. John Doe" name="name" id="nameRecover" value="" required>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Email</label>
-        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="email" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <label class="control-label col-sm-2 col-md-2 col-lg-3 col-xs-2">Email</label>
+        <div class="col-sm-8 col-md-8 col-lg-7 col-xs-12">
+          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="emailRecover" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
         </div>
       </div>
 
@@ -112,14 +111,29 @@
         <br>
         <button type="submit" class="btn btn-default">Recover Username</button>
       </div>
-      <div id="usernameDisplay">
 
-      </div>
+
+      <div class="form-group" id="userRecoverMessage">
+        <center><h3 style="font-size:20px" class="hidden">Our data record shows:</h3></center>
+        <div id="multipleUsernameRecover" style="font-size:16px;" class="col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-sm-8 col-md-8 col-lg-8 col-xs-12 hidden">
+          <p>There are multiple usernames associated with this email address</p>
+          <p>please select the username you want to recover the password for.</p>
+        </div>
+
+          <div id ="emailNotExist"class="col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-sm-8 col-md-8 col-lg-8 col-xs-12 hidden "  style="color:white;">
+
+            <p>Sorry, we could not find your email address in our database.</p>
+            <p>Please enter a valid email address or register with a new email address.</p>
+          </div>
+
+          <div class=" hidden col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-sm-8 col-md-8 col-lg-8 col-xs-12 "  id="usernameDisplay" style="color:white;">
+          </div>
+        </div>
+
     </form>
     <br><br>
 
-    <form class="form-horizontal" id="passwordRecover" action="#" method="POST">
-      <!-- <div style="height:2px; background-color:black;"></div> -->
+    <form class="form-horizontal" id="passwordRecover" action="{{url_for('passwordRecovery')}}" method="POST">
       <hr>
 
       <center>
@@ -127,23 +141,27 @@
       <br>
 
       <div class="form-group">
-        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Username</label>
-        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-          <input type="text" class="form-control" placeholder="ex. JohnyDoe" name="username" id="username" value="" minlength="9" maxlength="20" required pattern="[a-zA-Z0-9]*$" title="Username should only contain letter and numbers (no spaces).">
-          <p id="usernameErr" class="text-danger small hidden">Username is already taken.</p>
+        <label class="control-label col-sm-2 col-md-2 col-lg-3 col-xs-2">Username</label>
+        <div class="col-sm-8 col-md-8 col-lg-7 col-xs-12">
+          <input type="text" class="form-control" placeholder="ex. JohnyDoe" name="username" id="usernamePasswordRecover" value="" minlength="9" maxlength="20" required pattern="[a-zA-Z0-9]*$" title="Username should only contain letter and numbers (no spaces).">
         </div>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Email</label>
-        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="email" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <label class="control-label col-sm-2 col-md-2 col-lg-3 col-xs-2">Email</label>
+        <div class="col-sm-8 col-md-8 col-lg-7 col-xs-12">
+          <input type="email" class="form-control" placeholder="ex. johndoe@gmail.com" name="email" id="emailPasswordRecover" value="" title="Please enter a valid email address." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
         </div>
       </div>
 
       <div class="form-group text-center">
         <br>
         <button type="submit" class="btn btn-default">Recover Password</button>
+      </div>
+
+      <div class="form-group text-center hidden" id="passwordRecoverMessage">
+        <p>There is no username associated with this email address.</p>
+        <p>Please try again.</p>
       </div>
 
     </form>
