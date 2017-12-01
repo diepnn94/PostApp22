@@ -332,13 +332,62 @@ $(function(){
 })
 
 function usernameLookUp(){
-  
+    var name = $("#nameRecover").val();
+    var email = $("#emailRecover").val();
+    $("#emailNotExist").addClass('hidden');
+    $("#userRecoverMessage h3").addClass('hidden');
+    $("#multipleUsernameRecover").addClass('hidden');
+    $("#usernameDisplay").addClass('hidden');
+    var i;
+    $.ajax({
+      url: 'https://api.mlab.com/api/1/databases/post-app/collections/user?q={ "email": "' + email + '", "name": "' + name + '" }&apiKey=JWHpnnsJXMPxBJnJE0NN-LBMU8PJaaLQ',
+      success: function(data){
+        if (data.length == 0){
+          $("#userRecoverMessage h3").removeClass('hidden');
+          $("#emailNotExist").removeClass('hidden');
+
+        }
+        else{
+          $("#usernameDisplay").children().remove();
+          if (data.length > 1){
+            $("#multipleUsernameRecover").removeClass('hidden');
+          }
+          for (i = 0; i < data.length; i++){
+            var username = $("<p>"+data[i].username+ "</p>");
+            $("#usernameDisplay").append(username);
+          }
+          $("#usernameDisplay").removeClass('hidden');
+          $("#userRecoverMessage h3").removeClass('hidden');
+          $("#usernameRecover").trigger("reset");
+        }
+      }
+    })
 }
 
+function recoverPassword(){
+  var username = $("#usernamePasswordRecover").val();
+  var email = $("#emailPasswordRecover").val();
+  $.ajax({
+    url: 'https://api.mlab.com/api/1/databases/post-app/collections/user?q={ "email": "' + email + '", "username": "' + username + '" }&apiKey=JWHpnnsJXMPxBJnJE0NN-LBMU8PJaaLQ',
+    success: function(data){
+      if (data.length == 0){
+        $("#passwordRecoverMessage").removeClass('hidden');
+      }
+      else{
+        $("#passwordRecover").unbind("submit").submit();
+      }
+    }
+  })
 
+}
 $(function(){
   $("#usernameRecover").on("submit", function(e){
     e.preventDefault();
-    alert("GOING TO LOOK FOR ASSOCIATION");
+    usernameLookUp();
+  })
+
+  $("#passwordRecover").on("submit", function(e){
+    e.preventDefault();
+    recoverPassword();
   })
 })
