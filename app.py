@@ -31,9 +31,13 @@ app.secret_key= 'postapptesting2017'
 def sendEmailConfimation(name,username, receivers):
     msg = Message("Welcome to Post App", sender = mailInfo.mailSetup().username, recipients = [receivers]);
     msg.body = "Hello {}, thank you for joining Post App. Your username is {} and your KEY is {}.\
-    Please keep this email as a record and use the KEY to complete your registration.\nSincerely,\nPost App".format(name, username, KEY);
+    Please keep this email as a record and use the KEY to complete your registration.\n\nSincerely,\nPost App".format(name, username, KEY);
     return msg;
 
+def sendPassword(name, username, password, receivers):
+    msg = Message("Welcome to Post App", sender = mailInfo.mailSetup().username, recipients = [receivers]);
+    msg.body = "Hello {}, your username is {} and your password is {}. Please keep this email as a record and use the new password to access POST APP.\n\nSincerely,\nPost App".format(name, username, password);
+    return msg;
 def connect():
     connection = MongoClient("ds163294.mlab.com", 63294, tz_aware = True)
     handle = connection["post-app"]
@@ -72,8 +76,20 @@ def emailConfirmation():
     return render_template("emailConfirm.html");
 
 
+@app.route("/passwordRecovery", methods=["POST"])
+def passwordRecovery():
+    if request.method == "POST":
+        username = request.form["username"];
+        email = request.form["email"];
+        result = db.user.find({"username":username});
+        for item in result:
+            # (name, username, password, receivers)
+            print(item["password"]);
+            message = sendPassword(item["name"],username, item["password"], email );
+            mail.send(message);
+            return redirect(url_for("main"));
 
-@app.route("/registration", methods=["POST", "GET"])
+@app.route("/registration", methods=["POST"])
 def registration():
     if request.method == "POST":
         name = request.form["name"];
