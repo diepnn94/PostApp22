@@ -209,7 +209,7 @@ function galleryActive(){
 
     var clone = $("<img src= '" + img_src + "'>").css({
         "width": "80vw",
-        "height": "80vh",
+        "height": "60vh",
         "top": "10vh",
         "left": "10vw",
         "position": 'fixed',

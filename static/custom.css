@@ -23,7 +23,7 @@ div{
 }
 .userRecover a{
   color:white;
-  font-size: 10px;
+  font-size: x-small;
 
 }
 
@@ -32,10 +32,11 @@ div{
 
 }
 
-#registrationForm, #passwordRecover, #usernameRecover label{
+#registrationForm, #passwordRecover, #usernameRecover  {
   font-size: 14px;
   /*color: rgb(163, 152, 105);*/
-  color: rgb(140, 140, 140);
+  color: rgba(224, 228, 188, 1);
+  text-shadow: 1px 1px black;
 
 }
 #registrationForm, #passwordRecover, #usernameRecover input, button{
@@ -169,7 +170,9 @@ footer ul li a img:hover{
 }
 
 .login{
-  height: 35vh;
+  /*height: auto;*/
+  /*overflow: auto;*/
+  height: 40vh;
   width: 100%;
   z-index: 1;
   padding: 1vmax;
@@ -181,17 +184,19 @@ footer ul li a img:hover{
 
 
 
+
 #gallery div img:hover{
   border: 2px solid rgb(31, 125, 150);
 }
 
 .close{
-color:red;
-position: absolute;
-top: 5px;
-right: 25px;
-font-size: 35px;
-font-weight: bold;
+  color:red;
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  font-size: 40px;
+  font-weight: bold;
+  z-index: 100;
 }
 
 
