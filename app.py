@@ -76,20 +76,19 @@ def emailConfirmation():
     return render_template("emailConfirm.html");
 
 
-@app.route("/passwordRecovery", methods=["POST"])
+@app.route("/passwordRecovery", methods=["POST", "GET"])
 def passwordRecovery():
     if request.method == "POST":
         username = request.form["username"];
         email = request.form["email"];
         result = db.user.find({"username":username});
         for item in result:
-            # (name, username, password, receivers)
-            print(item["password"]);
             message = sendPassword(item["name"],username, item["password"], email );
             mail.send(message);
             return redirect(url_for("main"));
+    # return redirect(url_for("main"));
 
-@app.route("/registration", methods=["POST"])
+@app.route("/registration", methods=["POST", "GET"])
 def registration():
     if request.method == "POST":
         name = request.form["name"];
@@ -98,6 +97,7 @@ def registration():
         message = sendEmailConfimation(name, username, email);
         mail.send(message);
         return redirect(url_for('emailConfirmation'));
+    # return redirect(url_for("emailConfirmation"));
 
 @app.route("/register")
 def register():
